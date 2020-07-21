@@ -2,10 +2,8 @@
 
 const express = require('express');
 const router = express.Router();
-const cat = require("../models/notes.js");
-const {
-    notes
-} = require('joi');
+const notes = require("../models/notes.js");
+
 
 
 router.get("/api/notes", (req, res) => {
@@ -14,17 +12,23 @@ router.get("/api/notes", (req, res) => {
         .catch(err => res.json(err))
 });
 
-router.post("api/notes", (req, res) => {
-    notes.create(["text", "title"], [req.body.title, req.body.text])
-        .then(result => res.json({
-            id: result.insertId
-        }))
+router.post("/api/notes", (req, res) => {
+    console.log(req.body);
+
+    notes.create(["title", "text"], [req.body.title, req.body.text])
+        .then(result =>{
+            console.log(result);
+            res.json({
+                id: result.insertId
+            })
+        })
         .catch(err => res.json(err))
 });
-router.delete("/notes/:id", (req, res) => {
+    router.delete("/:id", (req, res) => {
     notes.removeNote(req.params.id)
         .then(() => res.json({
             ok: true
         }))
         .catch((err) => res.status(500).json(err));
 });
+module.exports=router;

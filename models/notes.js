@@ -2,18 +2,20 @@
 
 const orm = require("../config/orm.js");
 
-class Cat {
+class notes {
     selectAll() {
         return orm.selectAll("notes")
     }
     create(columns, values) {
         return orm.create("notes", columns, values)
     }
-    update(objColVals, condition) {
-        return orm.update("notes", objColVals, condition)
-    }
-    // TODO: create a remove method that references orm.delete
+    // update(objColVals, condition) {
+    //     return orm.update("notes", objColVals, condition)
+    // }
+    removeNote(value) {
+        return orm.delete("notes", 'id', value)
+      }
 
 };
 
-module.exports = new Cat();
+module.exports = new notes();
