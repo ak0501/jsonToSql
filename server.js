@@ -11,7 +11,7 @@ const port = process.env.PORT || 3001;
 // const {
 //     notes
 // } = require("joi");
-const noteController=require("./controllers/notesController");
+const noteController=require("./notesController");
 /* -------------------------------------------------------------------------- */
 // Sets up the Express app to handle data parsing; middelware functions
 /* -------------------------------------------------------------------------- */

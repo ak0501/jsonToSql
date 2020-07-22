@@ -2,7 +2,7 @@
 
 const express = require('express');
 const router = express.Router();
-const notes = require("../models/notes.js");
+const notes = require("./notes.js");
 
 
 

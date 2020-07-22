@@ -1,6 +1,6 @@
 // jshint esversion:6
 
-const orm = require("../config/orm.js");
+const orm = require("./orm.js");
 
 class notes {
     selectAll() {
