@@ -29,7 +29,7 @@ class ORM {
     create(table, columns, value ) {
         // insert into notes (id,title,text) values (1,hello,world)
         const queryString = `Insert into ?? (${columns
-            .join(',')})VALUES(${this.printQuestionMarks(Text.length)})`;
+            .join(',')})VALUES(${this.printQuestionMarks(value.length)})`;
         console.log(queryString);
         return this.connection.query(queryString, [table, ...value]);
     }
@@ -42,10 +42,10 @@ class ORM {
     //     return this.connection.query(queryString, [table, objColVals, id])
     //   }
 
-      delete(table, cols, value){
-        const queryString = 'DELETE FROM ?? WHERE ??=?.?';
+      delete(table, objColVals, id){
+        const queryString = 'DELETE FROM ?? WHERE ??=?';
         console.log(queryString);
-        return this.connection.query(queryString, [table, cols, value])
+        return this.connection.query(queryString, [table, objColVals, id]);
       }
 
 }

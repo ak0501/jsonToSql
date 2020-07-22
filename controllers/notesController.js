@@ -24,11 +24,11 @@ router.post("/api/notes", (req, res) => {
         })
         .catch(err => res.json(err))
 });
-    router.delete("/:id", (req, res) => {
-    notes.removeNote(req.params.id)
-        .then(() => res.json({
-            ok: true
-        }))
+    router.delete("/api/notes/:id", (req, res) => {
+   console.log(req.params.id);
+        notes.removeNote([req.params.id])
+        .then((result) => res.json(result))
         .catch((err) => res.status(500).json(err));
 });
+  
 module.exports=router;
